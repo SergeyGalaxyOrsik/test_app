@@ -41,6 +41,8 @@ dependencies:
   http:
   shared_preferences: ^2.1.2
   internet_connection_checker: ^1.0.0+1
+  get_it:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

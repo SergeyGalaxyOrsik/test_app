@@ -21,7 +21,7 @@ class CategoryLocalDatasourceImpl implements CategoryLocalDatasource {
   CategoryLocalDatasourceImpl({required this.sharedPreferences});
 
   @override
-  Future<void> categoriesToCache(List<CategoryModel> categories) {
+  Future<List<String>> categoriesToCache(List<CategoryModel> categories) {
     final List<String> jsonCategoryList =
         categories.map((category) => json.encode(category.toJson())).toList();
 

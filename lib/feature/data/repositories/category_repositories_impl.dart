@@ -21,7 +21,7 @@ class CategotyRepositoryImpl implements CategoryRepository {
 
   @override
   Future<Either<Failure, List<CategoryEntity>>> getAllCategory() async {
-    return _getCategories(() {
+    return await _getCategories(() {
       return remoteDatasource.getAllCategory();
     });
   }
