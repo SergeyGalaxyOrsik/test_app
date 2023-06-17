@@ -9,17 +9,19 @@ abstract class DishesRemoteDatasource {
 
 class DishesRemoteDatasourceImpl implements DishesRemoteDatasource {
   final http.Client client;
+
   DishesRemoteDatasourceImpl({required this.client});
 
   @override
-  Future<List<DishesModel>> getAllDishes() async {
-    final response = await client.get(
-      Uri.parse('https://run.mocky.io/v3/aba7ecaa-0a70-453b-b62d-0e326c859b3b'),
-      headers: {'Content-Type': 'application/json'},
-    );
-    if (response.statusCode == 200) {
+  Future<List<DishesModel>> getAllDishes() => _getDisheFromUrl('https://run.mocky.io/v3/aba7ecaa-0a70-453b-b62d-0e326c859b3b');
+
+  Future<List<DishesModel>> _getDisheFromUrl(String url) async {
+    final response = await client.get(Uri.parse(url), headers: {'Content-Type': 'application/json'});
+    if(response.statusCode == 200) {
       final dishes = json.decode(response.body);
-      return (dishes['dishes'] as List).map((dishes) => DishesModel.fromJson(dishes)).toList();
+      return (dishes['dishes'] as List)
+          .map((dishes) => DishesModel.fromJson(dishes))
+          .toList();
     } else {
       throw ServerException();
     }

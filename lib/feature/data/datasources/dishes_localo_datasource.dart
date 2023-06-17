@@ -28,7 +28,6 @@ class DishesLocalDatasourceImpl implements DishesLocalDatasource {
 
     sharedPreferences.setStringList(CACHED_DISHES_LIST, jsonDishesList);
 
-    print('Dishes to write Cache: ${jsonDishesList.length}');
     return Future.value(jsonDishesList);
   }
 

@@ -21,12 +21,12 @@ class DishesModel extends DishesEntity {
 
   factory DishesModel.fromJson(Map<String, dynamic> json) {
     return DishesModel(
-      id: json['id'],
-      name: json['name'],
-      price: json['price'],
-      weight: json['weight'],
-      description: json['description'],
-      image_url: json['image_url'],
+      id: json['id'] as int,
+      name: json['name'] as String,
+      price: json['price'] as int,
+      weight: json['weight']as int,
+      description: json['description'] as String,
+      image_url: json['image_url'] as String,
       tegs: (json['tegs'] as List<dynamic>).map((e) => e as String).toList(),
     );
   }

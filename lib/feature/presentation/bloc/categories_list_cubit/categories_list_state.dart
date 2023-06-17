@@ -10,7 +10,6 @@ abstract class CategoriesState extends Equatable {
 
 class CategoriesEmpty extends CategoriesState {
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 
@@ -20,7 +19,6 @@ class CategoriesLoading extends CategoriesState {
   CategoriesLoading(this.oldCategoriesList);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [oldCategoriesList];
 
 }
@@ -31,7 +29,6 @@ class CategoriesLoaded extends CategoriesState {
   CategoriesLoaded(this.categoriesList);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [categoriesList];
 
 }
@@ -42,6 +39,5 @@ class CategoriesError extends CategoriesState {
   CategoriesError({required this.message});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [message];
 }

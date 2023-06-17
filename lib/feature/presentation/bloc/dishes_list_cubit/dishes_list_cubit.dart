@@ -17,7 +17,6 @@ class DishesListCubit extends Cubit<DishesState> {
     if(state is DishesLoading) return;
 
     final currentState = state;
-
     var oldDishe = <DishesEntity>[];
     if(currentState is DishesLoaded) {
       oldDishe = currentState.dishesList;
@@ -28,7 +27,7 @@ class DishesListCubit extends Cubit<DishesState> {
     final failureOrDishe = await getAllDishes();
     failureOrDishe.fold((error) => DishesError(message: _mapFailureToMessage(error)), (dishe) {
       final dishes = (state as DishesLoading).oldDishesList;
-      dishes.addAll(dishes);
+      dishes.addAll(dishe);
       emit(DishesLoaded(dishes));
     });
   }

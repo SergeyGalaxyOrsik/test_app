@@ -19,31 +19,30 @@ class DishesRepositoryImpl implements DishesRepository {
     required this.remoteDatasource,
   });
 
-
   @override
   Future<Either<Failure, List<DishesEntity>>> getAllDishes() async {
-    return _getDishes(() {
+    return await _getDishes(() {
       return remoteDatasource.getAllDishes();
     });
   }
 
   Future<Either<Failure, List<DishesModel>>> _getDishes(
       Future<List<DishesModel>> Function() getDishes) async {
-        if(await networkInfo.isConnected) {
-          try {
-            final remoteDishe = await getDishes();
-            localDatasource.dishesToCache(remoteDishe);
-            return Right(remoteDishe);
-          } on ServerException {
-            return Left(ServerFailure());
-          }
-        } else {
-          try {
-            final localDishe = await localDatasource.getLastDishesFromCache();
-            return Right(localDishe);
-          } on CacheException {
-            return Left(CacheFailure());
-          }
-        }
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteDishe = await getDishes();
+        localDatasource.dishesToCache(remoteDishe);
+        return Right(remoteDishe);
+      } on ServerException {
+        return Left(ServerFailure());
       }
+    } else {
+      try {
+        final localDishe = await localDatasource.getLastDishesFromCache();
+        return Right(localDishe);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    }
+  }
 }

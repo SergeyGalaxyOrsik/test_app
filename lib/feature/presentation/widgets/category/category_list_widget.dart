@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/feature/domain/entities/category_entitry.dart';
 import 'package:test_app/feature/presentation/bloc/categories_list_cubit/categories_list_cubit.dart';
 import 'package:test_app/feature/presentation/bloc/categories_list_cubit/categories_list_state.dart';
+import 'package:test_app/feature/presentation/widgets/category/category_card_widget.dart';
+import 'package:test_app/feature/presentation/widgets/loading_indicator_widget.dart';
 
 class CategoryList extends StatelessWidget {
   const CategoryList({super.key});
@@ -13,18 +15,15 @@ class CategoryList extends StatelessWidget {
       builder: (context, state) {
         List<CategoryEntity> categories = [];
         if (state is CategoriesLoading) {
-          return _loadingIndicator();
+          return LoadingIndicator();
         } else if (state is CategoriesLoaded) {
           categories = state.categoriesList;
         }
-        return ListView.separated(
+        return ListView.builder(
+          
           itemBuilder: (context, index) {
-            return Text('${categories[index]}');
-          },
-          separatorBuilder: (context, index) {
-            return Divider(
-              color: Colors.grey[400],
-            );
+            // print(categories[index]);
+            return CategoryCard(category: categories[index]);
           },
           itemCount: categories.length,
         );
@@ -32,12 +31,4 @@ class CategoryList extends StatelessWidget {
     );
   }
 
-  Widget _loadingIndicator() {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
-  }
 }

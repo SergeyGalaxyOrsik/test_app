@@ -26,7 +26,6 @@ class CategoryLocalDatasourceImpl implements CategoryLocalDatasource {
         categories.map((category) => json.encode(category.toJson())).toList();
 
     sharedPreferences.setStringList(CACHED_CATEGORIES_LIST, jsonCategoryList);
-    print('Categories to write Cache: ${jsonCategoryList.length}');
     return Future.value(jsonCategoryList);
   }
 
