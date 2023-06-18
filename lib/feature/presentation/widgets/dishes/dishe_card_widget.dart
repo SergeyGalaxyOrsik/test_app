@@ -6,7 +6,7 @@ import 'package:test_app/feature/presentation/widgets/dishes/dishe_full_card_wid
 
 class DishesCard extends StatelessWidget {
   final DishesEntity dishe;
-  const DishesCard({required this.dishe});
+  const DishesCard({super.key, required this.dishe});
 
   
 
@@ -18,31 +18,29 @@ class DishesCard extends StatelessWidget {
         onTap: () {
           showDialog(context: context, builder: (context) => DishesFullCard(dishe: dishe));
         },
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: 109,
-                width: 109,
-                decoration: BoxDecoration(
-                  color: AppColors.cellBackground,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.network(dishe.image_url),
-                ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 109,
+              width: 109,
+              decoration: BoxDecoration(
+                color: AppColors.cellBackground,
+                borderRadius: BorderRadius.circular(10),
               ),
-              SizedBox(
-                height: 5,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.network(dishe.image_url),
               ),
-              Text(
-                '${dishe.name}',
-                maxLines: 3,
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              dishe.name,
+              maxLines: 3,
+            ),
+          ],
         ),
       ),
     );

@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_app/feature/data/models/dishes_model.dart';
 import 'package:test_app/feature/domain/entities/dishes_entity.dart';
 import 'package:test_app/feature/presentation/bloc/cart_bloc/add_to_cart_event.dart';
 import 'package:test_app/feature/presentation/bloc/cart_bloc/add_to_cart_state.dart';

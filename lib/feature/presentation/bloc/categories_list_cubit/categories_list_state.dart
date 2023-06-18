@@ -16,7 +16,7 @@ class CategoriesEmpty extends CategoriesState {
 class CategoriesLoading extends CategoriesState {
   final List<CategoryEntity> oldCategoriesList;
 
-  CategoriesLoading(this.oldCategoriesList);
+  const CategoriesLoading(this.oldCategoriesList);
 
   @override
   List<Object?> get props => [oldCategoriesList];
@@ -26,7 +26,7 @@ class CategoriesLoading extends CategoriesState {
 class CategoriesLoaded extends CategoriesState {
   final List<CategoryEntity> categoriesList;
 
-  CategoriesLoaded(this.categoriesList);
+  const CategoriesLoaded(this.categoriesList);
 
   @override
   List<Object?> get props => [categoriesList];
@@ -36,7 +36,7 @@ class CategoriesLoaded extends CategoriesState {
 class CategoriesError extends CategoriesState {
   final String message;
 
-  CategoriesError({required this.message});
+  const CategoriesError({required this.message});
 
   @override
   List<Object?> get props => [message];

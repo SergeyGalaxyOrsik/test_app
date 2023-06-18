@@ -5,15 +5,15 @@ import 'package:test_app/feature/presentation/widgets/dishes/dishes_list_widget.
 class DishesPage extends StatelessWidget {
   final String appBarTitle;
 
-  const DishesPage({required this.appBarTitle});
+  const DishesPage({super.key, required this.appBarTitle});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '$appBarTitle',
-          style: TextStyle(
+          appBarTitle,
+          style: const TextStyle(
             fontFamily: 'SF Pro Display',
             fontSize: 18,
             color: Colors.black,
@@ -21,9 +21,9 @@ class DishesPage extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: AppColors.mainBackground,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
-        actions: [
+        actions: const [
           CircleAvatar(
             radius: 22,
             backgroundImage:
@@ -34,7 +34,7 @@ class DishesPage extends StatelessWidget {
           )
         ],
       ),
-      body: DishesListWidget(),
+      body: const DishesListWidget(),
       
     );
   }

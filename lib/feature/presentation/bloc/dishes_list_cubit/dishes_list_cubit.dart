@@ -4,8 +4,11 @@ import 'package:test_app/feature/domain/entities/dishes_entity.dart';
 import 'package:test_app/feature/domain/usecases/get_all_dishes.dart';
 import 'package:test_app/feature/presentation/bloc/dishes_list_cubit/dishes_list_state.dart';
 
+// ignore: constant_identifier_names
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
+// ignore: constant_identifier_names
 const CACHED_FAILURE_MESSAGE = 'Cache Failure';
+// ignore: constant_identifier_names
 const UNEXPECTED_FAILURE_MESSAGE = 'Unexpected Failure';
 
 class DishesListCubit extends Cubit<DishesState> {

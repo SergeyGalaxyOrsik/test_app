@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class DishesEntity extends Equatable {
   final int id;
   final String name;
@@ -8,6 +9,8 @@ class DishesEntity extends Equatable {
   final String description;
   final String image_url;
   final List<String> tegs;
+  int? count;
+  int? cartPrice;
 
   DishesEntity({
     required this.id,
@@ -17,6 +20,8 @@ class DishesEntity extends Equatable {
     required this.description,
     required this.image_url,
     required this.tegs,
+    required this.count,
+    required this.cartPrice
   });
 
   @override

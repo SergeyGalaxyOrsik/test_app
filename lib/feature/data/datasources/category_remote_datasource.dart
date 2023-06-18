@@ -16,7 +16,6 @@ class CategoryRemoteDatasourceImpl implements CategoryRemoteDatasource {
   Future<List<CategoryModel>> getAllCategory() => _getCategoryFromUrl('https://run.mocky.io/v3/058729bd-1402-4578-88de-265481fd7d54');
 
   Future<List<CategoryModel>> _getCategoryFromUrl(String url) async {
-    print(url);
     final response = await client
         .get(Uri.parse(url), headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 200) {

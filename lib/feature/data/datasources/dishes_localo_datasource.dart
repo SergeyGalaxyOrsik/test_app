@@ -14,6 +14,7 @@ abstract class DishesLocalDatasource {
   Future<void> dishesToCache(List<DishesModel> dishes);
 }
 
+// ignore: constant_identifier_names
 const CACHED_DISHES_LIST = 'CACHED_DISHES_LIST';
 
 class DishesLocalDatasourceImpl implements DishesLocalDatasource {
@@ -28,6 +29,7 @@ class DishesLocalDatasourceImpl implements DishesLocalDatasource {
 
     sharedPreferences.setStringList(CACHED_DISHES_LIST, jsonDishesList);
 
+    // ignore: void_checks
     return Future.value(jsonDishesList);
   }
 

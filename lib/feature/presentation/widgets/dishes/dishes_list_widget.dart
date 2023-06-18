@@ -4,13 +4,12 @@ import 'package:test_app/common/app_colors.dart';
 import 'package:test_app/feature/domain/entities/dishes_entity.dart';
 import 'package:test_app/feature/presentation/bloc/dishes_list_cubit/dishes_list_cubit.dart';
 import 'package:test_app/feature/presentation/bloc/dishes_list_cubit/dishes_list_state.dart';
-import 'package:test_app/feature/presentation/widgets/category/category_card_widget.dart';
 import 'package:test_app/feature/presentation/widgets/dishes/dishe_card_widget.dart';
 import 'package:test_app/feature/presentation/widgets/loading_indicator_widget.dart';
 
 
 class DishesListWidget extends StatefulWidget {
-  DishesListWidget({super.key});
+  const DishesListWidget({super.key});
 
   @override
   State<DishesListWidget> createState() => _DishesListWidgetState();
@@ -32,7 +31,7 @@ class _DishesListWidgetState extends State<DishesListWidget> {
         List<DishesEntity> dishes = [];
 
         if (state is DishesLoading) {
-          return LoadingIndicator();
+          return const LoadingIndicator();
         } else if (state is DishesLoaded) {
           dishes = state.dishesList;
         }
@@ -54,7 +53,7 @@ class _DishesListWidgetState extends State<DishesListWidget> {
                       selectedColor: AppColors.accentColor,
                       disabledColor: AppColors.cellBackground,
                       backgroundColor: AppColors.cellBackground,
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                         fontFamily: 'SF Pro Display',
                         fontSize: 14,
                       ),
@@ -81,7 +80,7 @@ class _DishesListWidgetState extends State<DishesListWidget> {
                 child: GridView.builder(
                   shrinkWrap: true,
                   gridDelegate:
-                      SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.8),
+                      const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.8),
                   itemBuilder: (context, index) {
                     // print(categories[index]);
                     final dishe = filterDishes[index];

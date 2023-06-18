@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:test_app/feature/domain/entities/category_entitry.dart';
 
 class CategoryModel extends CategoryEntity {

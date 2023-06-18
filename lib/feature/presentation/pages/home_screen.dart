@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:test_app/common/app_colors.dart';
@@ -19,10 +18,10 @@ class HomePage extends StatelessWidget {
         leading: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               width: 15,
             ),
-            Icon(
+            const Icon(
               Icons.location_on_outlined,
               color: Colors.black,
               size: 30,
@@ -30,7 +29,7 @@ class HomePage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Гродно',
                   style: TextStyle(
                     fontFamily: 'SF Pro Display',
@@ -39,7 +38,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '${_data()}',
+                  _data(),
                   style: TextStyle(
                     fontFamily: 'SF Pro Display',
                     fontSize: 18,
@@ -50,7 +49,7 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        actions: [
+        actions: const [
           CircleAvatar(
             radius: 22,
             backgroundImage:
@@ -60,7 +59,7 @@ class HomePage extends StatelessWidget {
           
         ],
       ),
-      body: CategoryList(),
+      body: const CategoryList(),
     );
   }
 

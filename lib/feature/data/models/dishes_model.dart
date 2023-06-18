@@ -1,5 +1,6 @@
 import 'package:test_app/feature/domain/entities/dishes_entity.dart';
 
+// ignore: must_be_immutable
 class DishesModel extends DishesEntity {
   DishesModel({
     required id,
@@ -9,6 +10,8 @@ class DishesModel extends DishesEntity {
     required description,
     required image_url,
     required tegs,
+    required count,
+    required cartPrice,
   }) : super(
           id: id,
           name: name,
@@ -17,6 +20,8 @@ class DishesModel extends DishesEntity {
           description: description,
           image_url: image_url,
           tegs: tegs,
+          count: count,
+          cartPrice: cartPrice
         );
 
   factory DishesModel.fromJson(Map<String, dynamic> json) {
@@ -28,6 +33,8 @@ class DishesModel extends DishesEntity {
       description: json['description'] as String,
       image_url: json['image_url'] as String,
       tegs: (json['tegs'] as List<dynamic>).map((e) => e as String).toList(),
+      count: 1,
+      cartPrice: json['price'] as int,
     );
   }
 

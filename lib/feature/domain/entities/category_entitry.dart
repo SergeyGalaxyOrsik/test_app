@@ -5,7 +5,7 @@ class CategoryEntity extends Equatable {
   final String name;
   final String image_url;
 
-  CategoryEntity({
+  const CategoryEntity({
     required this.id,
     required this.name,
     required this.image_url,

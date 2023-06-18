@@ -2,14 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/common/app_colors.dart';
-import 'package:test_app/feature/data/models/dishes_model.dart';
 import 'package:test_app/feature/domain/entities/dishes_entity.dart';
 import 'package:test_app/feature/presentation/bloc/cart_bloc/add_to_cart_bloc.dart';
 import 'package:test_app/feature/presentation/bloc/cart_bloc/add_to_cart_event.dart';
 
 class DishesFullCard extends StatelessWidget {
   final DishesEntity dishe;
-  const DishesFullCard({required this.dishe});
+  const DishesFullCard({super.key, required this.dishe});
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +43,13 @@ class DishesFullCard extends StatelessWidget {
                     children: [
                       ElevatedButton(
                         onPressed: () {},
-                        child: Icon(
+                        style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(40, 40),
+                            backgroundColor: AppColors.mainBackground),
+                        child: const Icon(
                           CupertinoIcons.heart,
                           color: Colors.black,
                         ),
-                        style: ElevatedButton.styleFrom(
-                            fixedSize: Size(40, 40),
-                            backgroundColor: AppColors.mainBackground),
                       ),
                       const SizedBox(
                         width: 8,
@@ -59,13 +58,13 @@ class DishesFullCard extends StatelessWidget {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: Icon(
+                        style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(40, 40),
+                            backgroundColor: AppColors.mainBackground),
+                        child: const Icon(
                           Icons.close,
                           color: Colors.black,
                         ),
-                        style: ElevatedButton.styleFrom(
-                            fixedSize: Size(40, 40),
-                            backgroundColor: AppColors.mainBackground),
                       ),
                     ],
                   ),
@@ -76,8 +75,11 @@ class DishesFullCard extends StatelessWidget {
               height: 8,
             ),
             Text(
-              '${dishe.name}',
-              style: TextStyle(fontFamily: 'SF Pro Display', fontSize: 16),
+              dishe.name,
+              style: const TextStyle(
+                fontFamily: 'SF Pro Display',
+                fontSize: 16,
+              ),
             ),
             const SizedBox(
               height: 8,
@@ -85,15 +87,15 @@ class DishesFullCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '${dishe.weight}₽ · ',
-                  style: TextStyle(
+                  '${dishe.price}₽ · ',
+                  style: const TextStyle(
                     fontFamily: 'SF Pro Display',
                     fontSize: 14,
                   ),
                 ),
                 Text(
                   '${dishe.weight}г',
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontFamily: 'SFPro Display',
                       fontSize: 14,
                       color: Colors.grey),
@@ -104,8 +106,8 @@ class DishesFullCard extends StatelessWidget {
               height: 8,
             ),
             Text(
-              '${dishe.description}',
-              style: TextStyle(
+              dishe.description,
+              style: const TextStyle(
                 fontFamily: 'SF Pro Display',
                 fontSize: 14,
               ),
@@ -114,40 +116,19 @@ class DishesFullCard extends StatelessWidget {
               height: 16,
             ),
             ElevatedButton(
-              onPressed: () {
-                final cartBloc = context.read<CartBloc>();
-                final cartItems = cartBloc.state.cartItems;
-                
-                if (cartItems.any((item) => item.id == dishe.id)) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Блюдо уже добавлено в карзину'),
-                      duration: Duration(seconds: 2),
-                    ),
-                  );
-                } else {
-                  cartBloc.add(AddToCart(dishe));
-                  ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Блюдо добавлено в карзину'),
-                    duration: Duration(seconds: 2),
-                  ),
-                );
-                }
-                
-              },
-              child: Text(
+              onPressed: () => _addToCart(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.accentColor,
+                fixedSize: Size(
+                  MediaQuery.of(context).size.width,
+                  48,
+                ),
+              ),
+              child: const Text(
                 'Добавить в корзину',
                 style: TextStyle(
                   fontFamily: 'SF Pro Display',
                   fontSize: 16,
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                primary: AppColors.accentColor,
-                fixedSize: Size(
-                  MediaQuery.of(context).size.width,
-                  48,
                 ),
               ),
             )
@@ -155,5 +136,28 @@ class DishesFullCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _addToCart(BuildContext context) {
+    final cartBloc = context.read<CartBloc>();
+    final cartItems = cartBloc.state.cartItems;
+
+    if (cartItems.any((item) => item.id == dishe.id)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Блюдо уже добавлено в карзину'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    } else {
+      cartBloc.add(AddToCart(dishe));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Блюдо добавлено в карзину'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      dishe.count = 1;
+    }
   }
 }

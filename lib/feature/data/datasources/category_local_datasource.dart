@@ -13,6 +13,7 @@ abstract class CategoryLocalDatasource {
   Future<void> categoriesToCache(List<CategoryModel> categories);
 }
 
+// ignore: constant_identifier_names
 const CACHED_CATEGORIES_LIST = 'CACHED_CATEGORIES_LIST';
 
 class CategoryLocalDatasourceImpl implements CategoryLocalDatasource {

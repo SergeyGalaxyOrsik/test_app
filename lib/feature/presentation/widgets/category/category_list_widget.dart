@@ -15,7 +15,7 @@ class CategoryList extends StatelessWidget {
       builder: (context, state) {
         List<CategoryEntity> categories = [];
         if (state is CategoriesLoading) {
-          return LoadingIndicator();
+          return const LoadingIndicator();
         } else if (state is CategoriesLoaded) {
           categories = state.categoriesList;
         }

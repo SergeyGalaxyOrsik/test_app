@@ -4,8 +4,11 @@ import 'package:test_app/feature/domain/entities/category_entitry.dart';
 import 'package:test_app/feature/domain/usecases/get_all_category.dart';
 import 'package:test_app/feature/presentation/bloc/categories_list_cubit/categories_list_state.dart';
 
+// ignore: constant_identifier_names
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
+// ignore: constant_identifier_names
 const CACHED_FAILURE_MESSAGE = 'Cache Failure';
+// ignore: constant_identifier_names
 const UNEXPECTED_FAILURE_MESSAGE = 'Unexpected Failure';
 
 class CategoriesListCubit extends Cubit<CategoriesState> {

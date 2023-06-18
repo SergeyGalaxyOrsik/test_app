@@ -16,7 +16,7 @@ class DishesLoading extends DishesState {
   final List<DishesEntity> oldDishesList;
   
 
-  DishesLoading(this.oldDishesList);
+  const DishesLoading(this.oldDishesList);
 
   @override
   List<Object?> get props => [oldDishesList];
@@ -26,7 +26,7 @@ class DishesLoading extends DishesState {
 class DishesLoaded extends DishesState {
   final List<DishesEntity> dishesList;
 
-  DishesLoaded(this.dishesList);
+  const DishesLoaded(this.dishesList);
 
   @override
   List<Object?> get props => [dishesList];
@@ -36,7 +36,7 @@ class DishesLoaded extends DishesState {
 class DishesError extends DishesState {
   final String message;
 
-  DishesError({required this.message});
+  const DishesError({required this.message});
   
   @override
   List<Object?> get props => [message];
