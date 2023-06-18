@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:test_app/common/app_colors.dart';
 import 'package:test_app/feature/presentation/pages/account_screen.dart';
 import 'package:test_app/feature/presentation/pages/bascket_screen.dart';
 import 'package:test_app/feature/presentation/pages/home_screen.dart';
 import 'package:test_app/feature/presentation/pages/search_screen.dart';
-import 'package:test_app/feature/presentation/widgets/category/category_list_widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -16,19 +13,12 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _currentPageIndex = 0;
 
-  List<Widget> _pages = <Widget>[
-    HomePage(),
-    SearchPage(),
-    BuscketPage(),
-    AccountPage(),
-  ];
   @override
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
-        // backgroundColor: CupertinoTheme.of(context).barBackgroundColor.withOpacity(1.0),
+        backgroundColor: CupertinoTheme.of(context).barBackgroundColor.withOpacity(1.0),
         height: 69,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -53,24 +43,20 @@ class _MainPageState extends State<MainPage> {
         switch (index) {
           case 0:
             return CupertinoTabView(builder: (context) {
-              return CupertinoPageScaffold(child: HomePage());
+              return const CupertinoPageScaffold(child: HomePage());
             });
-            break;
           case 1:
             return CupertinoTabView(builder: (context) {
-              return CupertinoPageScaffold(child: SearchPage());
+              return const CupertinoPageScaffold(child: SearchPage());
             });
-            break;
           case 2:
             return CupertinoTabView(builder: (context) {
-              return CupertinoPageScaffold(child: BuscketPage());
+              return const CupertinoPageScaffold(child: BuscketPage());
             });
-            break;
           case 3:
             return CupertinoTabView(builder: (context) {
-              return CupertinoPageScaffold(child: AccountPage());
+              return const CupertinoPageScaffold(child: AccountPage());
             });
-            break;
           default:
             return const CupertinoTabView();
             
